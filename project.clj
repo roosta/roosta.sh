@@ -21,7 +21,7 @@
 
   :plugins [[lein-environ "1.1.0"]
             [lein-cljsbuild "1.1.7"]
-            [lein-asset-minifier "0.2.7"
+            [lein-asset-minifier "0.4.4"
              :exclusions [org.clojure/clojure]]]
 
   :ring {:handler sh.roosta.handler/app
