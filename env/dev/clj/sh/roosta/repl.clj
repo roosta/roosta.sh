@@ -1,8 +1,9 @@
 (ns sh.roosta.repl
-  (:use sh.roosta.handler
-        figwheel-sidecar.repl-api
-        ring.server.standalone
-        [ring.middleware file-info file]))
+  (:require [sh.roosta.handler :refer [app]]
+            [ring.server.standalone :refer [serve]]
+            [ring.middleware.file :refer [wrap-file]]
+            [ring.middleware.file-info :refer [wrap-file-info]]
+            [figwheel-sidecar.repl-api :refer [start-figwheel! stop-figwheel! cljs-repl]]))
 
 (defonce server (atom nil))
 
