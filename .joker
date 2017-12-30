@@ -1,0 +1,2 @@
+{:known-macros [compojure.core/defroutes]
+ :ignored-unused-namespaces [reagent.debug]}
