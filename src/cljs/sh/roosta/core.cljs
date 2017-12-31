@@ -1,14 +1,8 @@
 (ns sh.roosta.core
-    (:require [reagent.core :as reagent :refer [atom]]
+    (:require [reagent.core :as r]
+              [sh.roosta.home :as home]
               [secretary.core :as secretary :include-macros true]
               [accountant.core :as accountant]))
-
-;; -------------------------
-;; Views
-
-(defn home-page []
-  [:div [:h2 "Welcome to sh.roosta"]
-   [:div [:a {:href "/about"} "go to about page"]]])
 
 (defn about-page []
   [:div [:h2 "About sh.roosta"]
@@ -17,13 +11,13 @@
 ;; -------------------------
 ;; Routes
 
-(def page (atom #'home-page))
+(def page (r/atom #'home/main))
 
 (defn current-page []
   [:div [@page]])
 
 (secretary/defroute "/" []
-  (reset! page #'home-page))
+  (reset! page #'home/main))
 
 (secretary/defroute "/about" []
   (reset! page #'about-page))
@@ -32,7 +26,7 @@
 ;; Initialize app
 
 (defn mount-root []
-  (reagent/render [current-page] (.getElementById js/document "app")))
+  (r/render [current-page] (.getElementById js/document "app")))
 
 (defn init! []
   (accountant/configure-navigation!
