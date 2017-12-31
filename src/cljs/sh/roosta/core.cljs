@@ -1,6 +1,10 @@
 (ns sh.roosta.core
     (:require [reagent.core :as r]
               [sh.roosta.home :as home]
+              [re-frame.core :as rf]
+              [reagent.debug :as d]
+              [sh.roosta.subs]
+              [sh.roosta.events]
               [secretary.core :as secretary :include-macros true]
               [accountant.core :as accountant]))
 
@@ -37,4 +41,5 @@
      (fn [path]
        (secretary/locate-route path))})
   (accountant/dispatch-current!)
-  (mount-root))
+  (mount-root)
+  (rf/dispatch-sync [:initialize-db]))

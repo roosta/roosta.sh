@@ -1,5 +1,7 @@
 (ns sh.roosta.home
   (:require [reagent.core :as r]
+            [reagent.debug :as d]
+            [re-frame.core :as rf]
             [quil.middleware :as m]
             [quil.core :as q :include-macros true]))
 
