@@ -8,6 +8,8 @@
                  [ring-server "0.5.0"]
                  [reagent "0.7.0"]
                  [reagent-utils "0.2.1"]
+                 [stylefy "1.2.0"]
+                 [re-frame "0.10.3-beta1"]
                  [ring "1.6.3"]
                  [ring/ring-defaults "0.3.1"]
                  [compojure "1.6.0"]
@@ -57,6 +59,8 @@
                              :figwheel {:on-jsload "sh.roosta.core/mount-root"}
                              :compiler {:main "sh.roosta.dev"
                                         :asset-path "/js/out"
+                                        :preloads [day8.re-frame.trace.preload]
+                                        :closure-defines {"re_frame.trace.trace_enabled_QMARK_" true}
                                         :output-to "target/cljsbuild/public/js/app.js"
                                         :output-dir "target/cljsbuild/public/js/out"
                                         :source-map true
@@ -78,6 +82,7 @@
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.6.3"]
                                   [prone "1.1.4"]
+                                  [day8.re-frame/trace "0.1.14"]
                                   [figwheel-sidecar "0.5.14"]
                                   [org.clojure/tools.nrepl "0.2.13"]
                                   [com.cemerick/piggieback "0.2.2"]
